@@ -1,3 +1,4 @@
 chapter_2:
  why single responsibility matters?
  why reference variable instead of value?
+ Why to send messages instead of depending on complex data structure?
