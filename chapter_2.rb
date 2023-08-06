@@ -81,3 +81,29 @@ end
 # is any changes in the structure can be adjusted in the #wheelify method instead of
 # #diameters. And if you think about it,#diameters now it can be reused as well as it 
 # just needs wheel.rim and wheel.tire to respond.
+ 
+# Why enforce single responsibility everywhere?
+#
+# Methods, like classes, should have a single responsibility. All of the same reasons
+# apply; having just one responsibility makes them easy to change and easy to reuse.
+
+def diameters
+ wheels.collect {|wheel|
+  wheel.rim + (wheel.tire * 2)}
+end
+
+# So this method is doing two things, traversing through DS and calculating the
+# diameter. We can split the task into two methods
+
+ # first - iterate over the array
+ def diameters
+  wheels.collect {|wheel| diameter(wheel)}
+ end
+
+ # second - calculate diameter of ONE wheel
+ def diameter(wheel)
+  wheel.rim + (wheel.tire * 2))
+ end
+
+# Now the second method can be easily used if someone just needs diameter of one
+# wheel
