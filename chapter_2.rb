@@ -107,3 +107,38 @@ end
 
 # Now the second method can be easily used if someone just needs diameter of one
 # wheel
+
+
+# Isolate responsibilities of class
+#
+# I didn't get much, but she says to postponed the desicion as much as 
+# possible. And every class should have only one responsibility. The 
+# below code is something I haven't seen before.As you can see Wheel
+# is introduced inside Gear class. Maybe, the idea is since Gear and 
+# Wheel is too small now. We can comprehend the idea of Wheel inside
+# Gear class, thus postponing the idea of creating a seperate wheel 
+# class for later. But at the same time we acknowledge that Wheel req
+# uires a different class.
+
+ class Gear
+  attr_reader :chainring, :cog, :wheel
+  def initialize(chainring, cog, rim, tire)
+    @chainring = chainring
+    @cog = cog
+    @wheel = Wheel.new(rim, tire)
+  end
+
+  def ratio
+    chainring / cog.to_f
+  end
+
+  def gear_inches
+    ratio * wheel.diameter
+  end
+
+  Wheel = Struct.new(:rim, :tire) do
+  def diameter
+    rim + (tire * 2)
+  end
+  end
+ end

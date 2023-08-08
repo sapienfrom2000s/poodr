@@ -4,3 +4,4 @@ chapter_2:
  Why to send messages instead of depending on complex data structure?
 
  why single responsibility matters for methods?
+ about isolating class responsibilities.
