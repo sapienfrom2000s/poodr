@@ -88,3 +88,10 @@
 # If number of argument changes for initialize in  Wheel class
 # If order of argument changes for initialize
 # Something happens to diameter method
+#
+# 
+# Degree of coupleness(How tightly a code is coupled?)
+#
+# Higher the number of dependecies, tightly the code is coupled. 
+# 
+
