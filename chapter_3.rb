@@ -94,4 +94,23 @@
 #
 # Higher the number of dependecies, tightly the code is coupled. 
 # 
+#
+# Dependency injection 
+#
+# If you look into gear inches method, it depends explicitly on Wheel class
+# What if lets say you want to calculate gear inches for another object that
+# is not wheel. Fucked up, isn't it. How about instead passing an object that
+# responds to diameter message.
+#
+# That would give you the flexibility to introduce objects other than Wheel
+# instances.
+#
 
+def diameter
+  ratio*(some_object_passed_that_responds_to_diameter.diameter)
+end
+
+# This idea is called dependency injection.
+# The new code no longer depends on the Wheel class or the parameters, it
+# just needs an object that resps to diameter.
+# https://stackoverflow.com/questions/130794/what-is-dependency-injection
