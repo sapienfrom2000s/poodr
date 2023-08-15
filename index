@@ -10,3 +10,4 @@ chapter_3:
  What is dependency?
  How to know, "how tightly a code is coupled?"
  Dependency injection.
+ Using Wrapper to solve order dependecy issues.

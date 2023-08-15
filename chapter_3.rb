@@ -114,3 +114,37 @@ end
 # The new code no longer depends on the Wheel class or the parameters, it
 # just needs an object that resps to diameter.
 # https://stackoverflow.com/questions/130794/what-is-dependency-injection
+#
+# What to do when you can't change dependencies?
+#
+#  module SomeFramework
+ class Gear
+ attr_reader :chainring, :cog, :wheel
+ def initialize(chainring, cog, wheel)
+ @chainring = chainring
+ @cog = cog
+ @wheel = wheel
+ end
+ # ...
+ end
+ end
+
+ # wrap the interface to protect yourself from changes
+ module GearWrapper
+ def self.gear(args)
+ SomeFramework::Gear.new(args[:chainring],
+ args[:cog],
+ args[:wheel])
+ end
+ end
+
+ # Now you can create a new Gear using an arguments hash.
+ GearWrapper.gear(
+ :chainring => 52,
+ :cog => 11,
+ :wheel => Wheel.new(26, 1.5)).gear_inches
+
+# We can't change the Gear class for some reasons but we also don't want
+# to depend on the initialize order. So we wrap Gear class in the 
+# GearWrapper which doesn't depends on order.
+
