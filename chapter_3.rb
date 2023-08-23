@@ -147,4 +147,14 @@ end
 # We can't change the Gear class for some reasons but we also don't want
 # to depend on the initialize order. So we wrap Gear class in the 
 # GearWrapper which doesn't depends on order.
-
+#
+#
+# Dependency direction
+# A --> B --> C --> D
+# Say, class A is the parent of B, B is the parent of C and so on.
+# If you had the option to rearrange them, you would do it in the order
+# of stable class --> less stable class --> least stable class
+# The idea is that the less stable code is more likely to change and if 
+# it lies more on the leaf side of the tree it would not result in huge 
+# change to its childrens. Imagine, changing the String class for ruby.
+# It would result in changing everywhere the String class is used.
