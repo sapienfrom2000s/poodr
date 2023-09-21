@@ -12,3 +12,6 @@ chapter_3:
  Dependency injection.
  Using Wrapper to solve order dependecy issues.
  Dependency direction
+
+chapter_4
+ What should a interface look like?
